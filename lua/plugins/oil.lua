@@ -3,6 +3,7 @@ return {
   dependencies = { 'nvim-tree/nvim-web-devicons' }, -- use if prefer nvim-web-devicons
   config = function()
     require('oil').setup {
+      delete_to_trash = true,
       columns = { 'icon' },
       keymaps = {
         ['<C-h>'] = false,
@@ -10,6 +11,9 @@ return {
       },
       view_options = {
         show_hidden = true,
+        is_always_hidden = function(name, _)
+          return name == '..'
+        end,
       },
     }
 
