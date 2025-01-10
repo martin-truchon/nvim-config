@@ -5,6 +5,10 @@ vim.g.have_nerd_font = true
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
+
+-- Don't hide quote in JSON files
+vim.opt.conceallevel = 0
 
 -- Make line numbers default
 vim.opt.number = true
@@ -62,6 +66,10 @@ vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 999
+
+-- Use CTRL+c to type escape in insert mode
+-- CTRL+c does not call `InsertLeave` autocommands which causes issues with some plugins
+vim.keymap.set('i', '<C-c>', '<Esc>', { noremap = true })
 
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`

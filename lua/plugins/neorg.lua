@@ -11,7 +11,7 @@ return {
         ['core.dirman'] = {
           config = {
             workspaces = {
-              neorg = '~/Neorg',
+              neorg = '~/neorg',
             },
             default_workspace = 'neorg',
           },
@@ -19,6 +19,13 @@ return {
       },
     }
     vim.wo.foldlevel = 99
-    vim.wo.conceallevel = 2
+
+    -- set the conceallevel to 2, but only for norg files
+    vim.api.nvim_create_autocmd('filetype', {
+      pattern = 'norg',
+      callback = function()
+        vim.opt_local.conceallevel = 2
+      end,
+    })
   end,
 }
